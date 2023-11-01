@@ -14,7 +14,7 @@ server.use(express.json())  // excess to body parser in express
 
 const Routers = require("./Routes")
 
-server.use(Routers)
+server.use("/api",Routers)
 
 
 server.listen(Port,()=>
