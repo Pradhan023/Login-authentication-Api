@@ -26,8 +26,7 @@ const RegisterController = (req,res)=>{
     }
     array.push(TempObj)
     const Token = jwt.sign({username:Regsdata.email},secretKey)
-    res.send({msg:"User is registered",Token:Token})
-    console.log(array);
+     return res.send({msg:"User is registered",Token:Token})
     
 }
 
