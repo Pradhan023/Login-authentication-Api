@@ -25,8 +25,8 @@ const RegisterController = (req,res)=>{
         password : hashpassword
     }
     array.push(TempObj)
-    const Token = jwt.sign({username:Regsdata.email},secretKey)
-     return res.send({msg:"User is registered",Token:Token})
+    const token = jwt.sign({username:Regsdata.email},secretKey)
+     return res.send({msg:"User is registered",token:token})
     
 }
 
@@ -47,8 +47,8 @@ const LoginController = (req,res)=>{
 
             if(comparehash)
             {
-                const Token = jwt.sign({username:Regsdata.email},secretKey,{expiresIn:"7d"})
-                return res.send({msg:"User is Login Successfully",Token:Token})
+                const token = jwt.sign({username:Logdata.email},secretKey,{expiresIn:"7d"})
+                return res.send({msg:"User is Login Successfully",token:token})
             }
             else{
                 return res.send({msg:"Check Your Password"})
