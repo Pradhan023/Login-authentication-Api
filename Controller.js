@@ -7,6 +7,7 @@ const secretKey = "Anish123"
 
 const RegisterController = (req,res)=>{
     const Regsdata = req.body;
+    console.log(Regsdata);
     const details = array.find(item=>{
         if(item.email === Regsdata.email)
         {
@@ -21,12 +22,14 @@ const RegisterController = (req,res)=>{
     const hashpassword = bcrypt.hashSync(Regsdata.password,10) //genrate some random string and symbol and add password , string+symol+password
     
     const TempObj = {
+        firstname:Regsdata.firstname,
+        lastname:Regsdata.lastname,
         email:Regsdata.email,
         password : hashpassword
     }
     array.push(TempObj)
     const token = jwt.sign({username:Regsdata.email},secretKey)
-     return res.send({msg:"User is registered",token:token})
+     return res.send({msg:"User is registered",array,token:token})
     
 }
 
